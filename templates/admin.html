@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="user-container" style="overflow: auto; max-height: 80vh">
+    <div class="table-responsive">
+        <table class="table" id="users">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Attachment</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr id={{ user.id }}>
+                    <th scope="row">{{ user[0] }}</th>
+                    <td> {{ user[1] }} </td>
+                    <td> {{ user[2] }} </td>
+                    <td> {{ user[3] }} </td>
+                    <td> {{ user[4] }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
