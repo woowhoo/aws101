@@ -25,7 +25,7 @@ class SignupForm(Form):
     name = TextField('Name:', validators=[validators.InputRequired()])
     email = TextField('Email:', validators=[validators.InputRequired(), validators.Length(min=6, max=35)])
     password = TextField('Password:', validators=[validators.InputRequired(), validators.Length(min=3, max=35)])
-    photo = FileField('photo')
+    photo = FileField('attachment')
 
     @app.route('/favicon.ico')
     def favicon():
@@ -61,7 +61,7 @@ class SignupForm(Form):
             name = request.form['name']
             password = request.form['password']
             email = request.form['email']
-            photo = request.files['photo']
+            photo = request.files['attachment']
 
             if form.validate():
             # Save the comment here.
@@ -78,11 +78,11 @@ class SignupForm(Form):
         sql = ''
         val = ''
 
-        if request.files['photo']:
+        if request.files['attachment']:
             s3 = boto3.client('s3')
-            s3.upload_fileobj(request.files['photo'], S3_BUCKET, request.files['photo'].filename)
+            s3.upload_fileobj(request.files['attachment'], S3_BUCKET, request.files['attachment'].filename)
             sql = 'INSERT INTO users (name, password, email, attachment) VALUES (%s, %s, %s, %s)'
-            val = (request.form['name'], request.form['password'], request.form['email'], request.files['photo'].filename)
+            val = (request.form['name'], request.form['password'], request.form['email'], request.files['attachment'].filename)
 
         else:
             sql = 'INSERT INTO users (name, password, email) VALUES (%s, %s, %s)'
