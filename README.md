@@ -211,16 +211,16 @@
 	5. **[Permissions]** &rightarrow; **[Bucket Policy]** &rightarrow; 아래 Policy 블록을 Bucket policy editor에 붙여놓고 **[Save]**
 		```json
 		{
-		"Version":"2012-10-17",
-		"Statement":[
-		{
-		"Sid":"AddPerm",
-		"Effect":"Allow",
-		"Principal": "*",
-		"Action":["s3:GetObject"],
-		"Resource":["arn:aws:s3:::<BUCKET_NAME>/*"]
-		}
-		]
+		  "Version":"2012-10-17",
+		  "Statement":[
+		    {
+		      "Sid":"AddPerm",
+		      "Effect":"Allow",
+		      "Principal": "*",
+		      "Action":["s3:GetObject"],
+		      "Resource":["arn:aws:s3:::<BUCKET_NAME>/*"]
+		    }
+		  ]
 		}
 	6. 파일 다운로드 재시도
 - Presigned URL
