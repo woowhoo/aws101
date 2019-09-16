@@ -69,6 +69,7 @@
 	1. **web-server-sg**를 클릭해서 해당 Security group설정창으로 이동
 	2. 화면 아래에 나오는 **[Inbound]** 를 클릭 &rightarrow; **[Edit]** 클릭후, **Type** = SSH를 선택 **Source** = My IP를 선택, **Description** = Saltware를 입력하고 **[Save]**
 
+
   > Security Group은 EC2 Instance의 방화벽(Firewall)이고 기본값으로 모든 포트에 대한 접속이 Deny 되어 있고 Inbound 또는 Outbouce Rule을 추가해서 특정 포트(또는 특정 포트 범위)에 대해서 특정 IP(또는 특정 IP 범위)에서의 접속을 Allow 할수 있다.
 
 ### Web Application 실행하기
@@ -228,7 +229,8 @@
 		```bash
 		sudo python3 form.py
 	3. Attachment에 있는 URL를 이용해서 파일 다운로드
-	> Presigned URL: 임시로 만들어진 URL를 통해서 S3 Object (Key) 에 대한 GET or PUT 권한 부여
+
+  > Presigned URL: 임시로 만들어진 URL를 통해서 S3 Object (Key) 에 대한 GET or PUT 권한 부여
 
 ## Application Services & Monitoring
 ### IAM User 생성
