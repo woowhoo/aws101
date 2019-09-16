@@ -263,11 +263,7 @@
 4. **[Properties]** &rightarrow; **[Static website hosting]** &rightarrow; **Use this bucket to host a website** &rightarrow; **Index document** = maintenance.html &rightarrow; **[Save]**
 5. ACL 또는 Bucket Policy를 활용해서 해당 Bucket에 Public access 부여
 ### Failover 라우팅 설정
-```mermaid
-graph TD
-A[End user] --> |x| B[EC2 server]
-A --> |failover|C[S3 Static web]
-```
+![](https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/media/58445/PZ6rFI93QQWkuOD0EQNh_aws%20failover%203.png.jpg)
 1. Route53 Dashboard에서 **[Hosted zones]** &rightarrow; **saltware.io** &rightarrow; 기존에 만든 Record Set 선택 &rightarrow; **Routing Policy** = Failover, **Failover Record Type** = Primary, **Associate with Health Check** = Yes, **Health Check to Associate** = 해당 도메인 네임 선택후 **[Save Record Set]**
 2. **[Create Record Set]**  &rightarrow; **Name** =<기존에 만든것과 동일하게 입력>, **Type** = A - IPv4 address, **Alias** = Yes,  **Alias Target** = s3-website.ap-northeast-2.amazonaws.com, **Routing Policy** = Failover, **Failover Record Type** = Secondary, **Evaluate Target Health** = No, **Associate with Health Check** = No
 3. Python Web App을 정지하고 Email Notification이 오면 점검중 페이지가 표시되는지 확인
