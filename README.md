@@ -39,6 +39,7 @@
 7. Add Tags 설정창에서 **[Add Tag]** 를 클릭하고, **Key** = Name, **Value** = Web을 입력후, **[Next: Configure Security Group]** 클릭
 	> Tag: Key-Value pair로 생성된 Resources(EC2, RDS, S3, etc)들을 구분, 검색 또는 그룹을 짓는데 이용
 8. Configure Security Group 설정창에서 [Create a **new** security group]을 선택후, **Security group name**에 web-server-sg, **Description**에 Web server for aws 101 lab를 입력후,
+
 	| Type | Protocol | Port Range | Source            | Description |   |
 	|------|----------|------------|-------------------|-------------|---|
 	| SSH  | TCP      | 22         | Custom, 0.0.0.0/0 |             | :negative_squared_cross_mark: |
