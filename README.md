@@ -28,7 +28,7 @@
 	> Snapshot: Point in time backup of EBS volume. 예를 들자면 EBS volume을 만들고 그 안에 MySQL를 설치한 후 Snapshot을 만들고 이후 Python을 설치하고 어플리케이션을 다운받아서 실행했다고 가정했을때, 해당 Snapshot을 이용해서 EBS volume을 생성한다면 MySQL이 설치된 시점까지로 데이터가 새롭게 생성된 EBS volume에 복구 될것이다.
 
 	> EBS vs Instance Store volume
-	![](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/ebs_backed_instance.png)
+  > ![](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/ebs_backed_instance.png)
 
 	> [EBS volume types]([https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html))
 	> * General Purpose SSD (gp2): 일반적인 Workload에 적합한 가성비를 가지고 있고 System Root Volume에 주로 이용
