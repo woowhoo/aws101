@@ -68,7 +68,8 @@
 	AWS Manangement Console에서 Web 인스턴스를 선택하고 화면 아래에 나오는 Description탭에 있는 Security groups에 있는 **[view inbound rules]** 눌러서 22 포트가 사용자 접속 아이피 또는 	0.0.0.0/0 (모든 IP)로 부터의 inbound traffic을 허가 했는지 확인하고, 없을경우 Inbound rule을 추가해주어야 함
 	1. **web-server-sg**를 클릭해서 해당 Security group설정창으로 이동
 	2. 화면 아래에 나오는 **[Inbound]** 를 클릭 &rightarrow; **[Edit]** 클릭후, **Type** = SSH를 선택 **Source** = My IP를 선택, **Description** = Saltware를 입력하고 **[Save]**
-	> Security Group은 EC2 Instance의 방화벽(Firewall)이고 기본값으로 모든 포트에 대한 접속이 Deny 되어 있고 Inbound 또는 Outbouce Rule을 추가해서 특정 포트(또는 특정 포트 범위)에 대해서 특정 IP(또는 특정 IP 범위)에서의 접속을 Allow 할수 있다.
+
+  > Security Group은 EC2 Instance의 방화벽(Firewall)이고 기본값으로 모든 포트에 대한 접속이 Deny 되어 있고 Inbound 또는 Outbouce Rule을 추가해서 특정 포트(또는 특정 포트 범위)에 대해서 특정 IP(또는 특정 IP 범위)에서의 접속을 Allow 할수 있다.
 
 ### Web Application 실행하기
 1. Clone a git repository
@@ -116,7 +117,8 @@
 1. MySQL database로 접속
 	EC2 Instance에서 `mysql -h <RDS_ENDPOINT> -u admin -p` 커맨드 실행후
 	`Enter password:` 에 위에 Master password 입력. 접속 실패시 Security Group에서 MySQL(Port 3306)에 대한 Inbound Rule이 있는지 확인후 없으면 추가.
-	> 동일한 VPC에 있는 Instances(EC2, RDS, ElastiCache, etc)간 통신은 Security group의 Inbound rule에 있는 Sources를 접속을 허가할 Instance가 가지고 있는 Security group으로 지정 가능.
+
+  > 동일한 VPC에 있는 Instances(EC2, RDS, ElastiCache, etc)간 통신은 Security group의 Inbound rule에 있는 Sources를 접속을 허가할 Instance가 가지고 있는 Security group으로 지정 가능.
 2. RDS Dashboard에서 **awslab**를 선택하고, Security 탭에 있는  **rds-mysql-sg**를 클릭해서 해당 Security group설정창으로 이동
 3.  화면 아래에 나오는  **[Inbound]**  를 클릭   **[Edit]** &rightarrow; **[Add Rule]** 클릭,  **Type**  = MYSQL/Aurora를 선택  **Source**  = Custom 옆에 있는 Textfield에 web-server를 입력후 Dropdown List에 나오는 web-server-sg를 선택,  **Description**  = Web를 입력하고  **[Save]**
 4. 1번에 있는 Command로 다시 MySQL에 접속
@@ -180,7 +182,8 @@
 6. **IAM role**에 방금 만든 awslab-ec2-role를 선택후 **[Apply]** 클릭
 7. Web UI에서 새로운 Form 작성, Attachment에 파일을 추가하고  **[Sign Up]**
 8. **botocore.exceptions.ClientError: An error occurred (AccessDenied) when calling the PutObject operation: Access Denied** 에러발생. AWS Credentials에 해당 S3 Bucket에 대한 PutObject 권한이 없어서 발생하는 에러
-	> IAM Role: AWS 서비스들에 대한 권한을 명시한 IAM Policy를 포함할수 있는 IAM Identity의 일종으로 IAM User, IAM Group에 귀속되거나 여타 AWS 서비스들에 (EC2, Lambda, etc) 부여되여 AWS services 대한 권한 관리
+
+  > IAM Role: AWS 서비스들에 대한 권한을 명시한 IAM Policy를 포함할수 있는 IAM Identity의 일종으로 IAM User, IAM Group에 귀속되거나 여타 AWS 서비스들에 (EC2, Lambda, etc) 부여되여 AWS services 대한 권한 관리
 ### IAM Policy 생성
 1. AWS Manangement Console에서 Web 인스턴스를 선택하고 화면 아래에 나오는 Description탭의 IAM role에 있는 **[awslab-ec2-role]** 클릭
 2. **[:heavy_plus_sign: Add inline policy]** 클릭후,
@@ -264,7 +267,9 @@
 4. **[Properties]** &rightarrow; **[Static website hosting]** &rightarrow; **Use this bucket to host a website** &rightarrow; **Index document** = maintenance.html &rightarrow; **[Save]**
 5. ACL 또는 Bucket Policy를 활용해서 해당 Bucket에 Public access 부여
 ### Failover 라우팅 설정
+
 ![](https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/media/58445/PZ6rFI93QQWkuOD0EQNh_aws%20failover%203.png.jpg)
+
 1. Route53 Dashboard에서 **[Hosted zones]** &rightarrow; **saltware.io** &rightarrow; 기존에 만든 Record Set 선택 &rightarrow; **Routing Policy** = Failover, **Failover Record Type** = Primary, **Associate with Health Check** = Yes, **Health Check to Associate** = 해당 도메인 네임 선택후 **[Save Record Set]**
 2. **[Create Record Set]**  &rightarrow; **Name** =<기존에 만든것과 동일하게 입력>, **Type** = A - IPv4 address, **Alias** = Yes,  **Alias Target** = s3-website.ap-northeast-2.amazonaws.com, **Routing Policy** = Failover, **Failover Record Type** = Secondary, **Evaluate Target Health** = No, **Associate with Health Check** = No
 3. Python Web App을 정지하고 Email Notification이 오면 점검중 페이지가 표시되는지 확인
