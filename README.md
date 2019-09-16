@@ -51,7 +51,8 @@
 2. **[Allocate new address]** 를 클릭후 **[Allocate]** 클릭
 3. 새롭게 생성된 Elastic IP를 선택하고, **[Actions]** &rightarrow; **[Associate address]** 클릭
 4. Instance 선택탭에서 Web를 선택 후 **[Associate]** 클릭
-	> EC2 Instance에 자동으로 부여된 Public IP 주소는 해당 EC2가 정지되는 순간 자동으로 Release 되고 다시 시작될때 새로운 Public IP를 할당 받음. 고정적은 Public IP가 필요하면 Elastic IP를 할당받아서 EC2에 붙여주어야 함
+
+  > EC2 Instance에 자동으로 부여된 Public IP 주소는 해당 EC2가 정지되는 순간 자동으로 Release 되고 다시 시작될때 새로운 Public IP를 할당 받음. 고정적은 Public IP가 필요하면 Elastic IP를 할당받아서 EC2에 붙여주어야 함
 	> 어 그럼 정지 안하면 되는거 아닐까요??
 ### EC2 Instance에 SSH 접속하기
 - Mac 또는 Linux의 경우
