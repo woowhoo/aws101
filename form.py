@@ -44,7 +44,7 @@ class SignupForm(Form):
                 item.pop(4)
             else:
                 if PRESIGNED_URL:
-                    s3_client = boto3.client('s3')
+                    s3_client = boto3.client('s3', region_name='ap-northeast-2')
                     item[4] = s3_client.generate_presigned_url('get_object',
                         Params={'Bucket': S3_BUCKET,'Key': item[4]}, ExpiresIn=300)
 
