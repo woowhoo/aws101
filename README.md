@@ -88,27 +88,27 @@
 ### RDS Instance 생성하기
 1. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 RDS를 검색하거나 **[Database]** 바로 밑에 있는 **[RDS]** 를 선택
 
-2. RDS Dashboard에서  **[Create database]** 클릭후,
-	**Choose a database creation method** = Standard Create,
-	**Engine options** = MySQL,
-	**Version** = 5.7.26,
-	**Templates** = Dev/Test,
-	**DB instance identifier**  = awslab,
-	**Master username** = admin,
-	**Auto generate a password** = :white_check_mark:,
-	**DB instance size** = Burstable classes - db.t2.micro,
-	**Storasge type** = General Purpose (SSD),
-	**Allocated storage** = 20,
-	**Enable storage autoscaling** =  :white_check_mark:,
-	**Maximum storage threshold** = 1000,
-	**Multi-AZ Deployment** = Create a standby instance,
-	**Virtual Private Cloud** = Default VPC,
-	Expend **[Additional connectivity configuration]**,
-	**Subnet group** = default,
-	**Publicly accessible** = No,
-	**VPC security group** = Create new,
-	**New VPC security group name** = rds-mysql-sg,
-	**[Create database]** 클릭
+2. RDS Dashboard에서  **[Create database]** 클릭후,  
+	**Choose a database creation method** = Standard Create,  
+	**Engine options** = MySQL,  
+	**Version** = 5.7.26,  
+	**Templates** = Dev/Test,  
+	**DB instance identifier**  = awslab,  
+	**Master username** = admin,  
+	**Auto generate a password** = :white_check_mark:,  
+	**DB instance size** = Burstable classes - db.t2.micro,  
+	**Storasge type** = General Purpose (SSD),  
+	**Allocated storage** = 20,  
+	**Enable storage autoscaling** =  :white_check_mark:,  
+	**Maximum storage threshold** = 1000,  
+	**Multi-AZ Deployment** = Create a standby instance,  
+	**Virtual Private Cloud** = Default VPC,  
+	Expend **[Additional connectivity configuration]**,  
+	**Subnet group** = default,  
+	**Publicly accessible** = No,  
+	**VPC security group** = Create new,  
+	**New VPC security group name** = rds-mysql-sg,  
+	**[Create database]** 클릭  
 3. 화면 상단의 파랑색 안내창에서 **[View credential details]** 클릭하여 Master password 확인 (메모해주세요)
 ### Multi-AZ failover
 1. RDS Instance 목록에서 **awslab**의 **Region & AZ**을 확인한다.
