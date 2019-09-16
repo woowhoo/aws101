@@ -43,12 +43,14 @@ class SignupForm(Form):
             if item[4] == None:
                 item.pop(4)
             else:
-                location = boto3.client('s3').get_bucket_location(Bucket=S3_BUCKET)['LocationConstraint']
-                item[4] = "https://s3-%s.amazonaws.com/%s/%s" % (location, S3_BUCKET, item[4])
+                if PRESIGNED_URL:
+                    s3_client = boto3.client('s3')
+                    item[4] = s3_client.generate_presigned_url('get_object',
+                        Params={'Bucket': S3_BUCKET,'Key': item[4]}, ExpiresIn=300)
 
-                # s3_client = boto3.client('s3')
-                # item[4] = s3_client.generate_presigned_url('get_object',
-                #     Params={'Bucket': S3_BUCKET,'Key': item[4]}, ExpiresIn=300)
+                else:
+                    location = boto3.client('s3').get_bucket_location(Bucket=S3_BUCKET)['LocationConstraint']
+                    item[4] = "https://s3-%s.amazonaws.com/%s/%s" % (location, S3_BUCKET, item[4])
 
             user_list.append(item)
         return render_template('admin.html', users=user_list)
