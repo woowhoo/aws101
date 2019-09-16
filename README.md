@@ -58,11 +58,9 @@
 	- SSH Private Key (.pem file) 권한변경
 		```bash
 		chmod 400 awslab.pem
-    ```
 	- SSH 연결
 		```bash
 		ssh -i awslab.pem ec2-user@<EC2 Instance Public IP>
-    ```
 - Windows 경우
 	- Putty 설정
 - SSH 접속이 되지 않을 경우 EC2 Instance에 붙어있는 Security Group에 SSH Protocol에 대해 해당 사용자가 접속된 IP로 부터 연결이 허가 되어있는지 확인.
@@ -75,15 +73,12 @@
 1. Clone a git repository
 	```bash
 	git clone https://github.com/woowhoo/aws101.git && cd aws101
-  ```
 2. Python Package 설치
 	```bash
 	sudo pip3 install -r requirements.txt
-  ```
 3. Application 실행
 	```bash
 	sudo python3 form.py
-  ```
 4. 웹브라우저에서 EC2 Instance Public IP로 접속. 접속 실패시 Security Group에서 HTTP에 대한 Inbound Rule이 있는지 확인후 없으면 추가.
 
 ## Database
@@ -130,15 +125,12 @@
 6. Database User 생성
 	```sql
 	CREATE USER form_user IDENTIFIED BY 'asdf1234';
-  ```
 7. Database User에 권한 부여
 	```sql
 	GRANT ALL PRIVILEGES ON form.* TO form_user;
-  ```
 8. Database 변경
 	```sql
 	USE form;
-  ```
 10. Table 생성
 	```sql
 	CREATE TABLE IF NOT EXISTS users (
@@ -149,13 +141,11 @@
 		attachment VARCHAR(255),
 		PRIMARY KEY (id)
 	);
-  ```
 ### Application 설정 파일 업데이트
 1. Text editer(vim or nano)로 config.py 파일을 열고 **DB_HOST** = <RDS_ENDPOINT>, **DB_NAME** = form, **DB_USER** = form_user, **DB_USERPASSWORD** = asdf1234로 변경
 2. Web Application을 재실행
 	```bash
 	sudo python3 form.py
-  ```
 4. 웹브라우저에서 EC2 Instance Public IP로 접속후 Form 작성 후 **[Sign Up]**
 	*Attachment에 파일은 첨부하지 않습니다.
 5. 완료후 IP주소 끝에 `/admin` 넣고 페이지를 불러오면 방금 입력한 form에 대한 정보를 볼수 있습니다.
@@ -178,7 +168,6 @@
 2. Web Application을 재실행
 	```bash
 	sudo python3 form.py
-  ```
 4. 웹브라우저에서 EC2 Instance Public IP로 접속후 Form 작성, Attachment에 파일을 추가하고  **[Sign Up]**
 5. **botocore.exceptions.NoCredentialsError: Unable to locate credentials** 에러가 발생. AWS credentials를 찾을수 없을때 발생하는 에러
 ### IAM Role 생성
@@ -228,14 +217,12 @@
 				}
 			]
 		}
-    ```
 	6. 파일 다운로드 재시도
 - Presigned URL
 	1. Text editer(vim or nano)로 config.py 파일을 열고 **PRESIGNED_URL** = True로 변경
 	2. Web Application을 재실행
 		```bash
 		sudo python3 form.py
-    ```
 	3. Attachment에 있는 URL를 이용해서 파일 다운로드
 	> Presigned URL: 임시로 만들어진 URL를 통해서 S3 Object (Key) 에 대한 GET or PUT 권한 부여
 
