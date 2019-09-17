@@ -4,6 +4,9 @@
 ## Architecture Diagram
 ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/AWS+101.png)
 
+## 시작하기전에
+1. 본 Hands-on lab은 AWS Seoul region 기준으로 작성되었습니다. Region을 Seoul (ap-northeast-2)로 변경 후 진행 부탁드립니다.
+2. [AWS Credit 추가하기]([https://aws.amazon.com/ko/premiumsupport/knowledge-center/add-aws-promotional-code/](https://aws.amazon.com/ko/premiumsupport/knowledge-center/add-aws-promotional-code/))
 ## Compute
 ### EC2 인스턴스 생성하기
 
@@ -63,7 +66,15 @@
 		```bash
 		ssh -i awslab.pem ec2-user@<EC2 Instance Public IP>
 - Windows 경우
-	- Putty 설정
+  - Putty & Puttygen 설치 ([https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.72-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.72-installer.msi "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.72-installer.msi"))
+  - Puttygen 실행 &rightarrow; **[Load]** &rightarrow; 위에서 다운받은 awslab.pem 선택 &rightarrow; **[Save private key]** &rightarrow; awslab 이름으로 저장
+  ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttykeygen.png)
+  - Putty 실행 &rightarrow; **Host Name** = [EC2 Instance Public IP]
+  ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyhost.png)
+  - Category 탭에서  **Connection**  &rightarrow; **SSH**  &rightarrow; **Auth**  &rightarrow; **Private key file for authentication에서 **[Browse]** 클릭  &rightarrow; awslab.ppk 선택
+  ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyauth.png)
+  - **Saved Sessions**에 awslab 입력 후 **[Save]** (이후 해당 EC2로 접속할 경우 해당 Session 선택후 **[Open]**
+  - **[Open]** &rightarrow; **login as:** 에 ec2-user를 입력
 - SSH 접속이 되지 않을 경우 EC2 Instance에 붙어있는 Security Group에 SSH Protocol에 대해 해당 사용자가 접속된 IP로 부터 연결이 허가 되어있는지 확인.
 	AWS Manangement Console에서 Web 인스턴스를 선택하고 화면 아래에 나오는 Description탭에 있는 Security groups에 있는 **[view inbound rules]** 눌러서 22 포트가 사용자 접속 아이피 또는 	0.0.0.0/0 (모든 IP)로 부터의 inbound traffic을 허가 했는지 확인하고, 없을경우 Inbound rule을 추가해주어야 함
 	1. **web-server-sg**를 클릭해서 해당 Security group설정창으로 이동
