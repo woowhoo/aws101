@@ -27,7 +27,7 @@
 	```
 	> Userdata:  EC2 Instance가 생성될때 Shell Script 또는 cloud-init 커맨드를 명시하여 환경설정 및 기타 소프트웨어 설치
 
-6. Add Storage 설정창에서 **[Next: Add Tags] ** 클릭
+6. Add Storage 설정창에서 **[Next: Add Tags]** 클릭
 	> Snapshot: Point in time backup of EBS volume. 예를 들자면 EBS volume을 만들고 그 안에 MySQL를 설치한 후 Snapshot을 만들고 이후 Python을 설치하고 어플리케이션을 다운받아서 실행했다고 가정했을때, 해당 Snapshot을 이용해서 EBS volume을 생성한다면 MySQL이 설치된 시점까지로 데이터가 새롭게 생성된 EBS volume에 복구 될것이다.
 
 	> EBS vs Instance Store volume  
@@ -72,7 +72,7 @@
   ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttykeygen.png)
   - Putty 실행 &rightarrow; **Host Name** = [EC2 Instance Public IP]
   ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyhost.png)
-  - Category 탭에서  **Connection**  &rightarrow; **SSH**  &rightarrow; **Auth**  &rightarrow; **Private key file for authentication에서 **[Browse]** 클릭  &rightarrow; awslab.ppk 선택  
+  - Category 탭에서  **Connection**  &rightarrow; **SSH**  &rightarrow; **Auth**  &rightarrow; **Private key file for authentication**에서 **[Browse]** 클릭  &rightarrow; awslab.ppk 선택  
   ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyauth.png)
   - **Saved Sessions**에 awslab 입력 후 **[Save]** (이후 해당 EC2로 접속할 경우 해당 Session 선택후 **[Open]**
   - **[Open]** &rightarrow; **login as:** 에 ec2-user를 입력
