@@ -71,8 +71,8 @@
   ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttykeygen.png)
   - Putty 실행 &rightarrow; **Host Name** = [EC2 Instance Public IP]
   ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyhost.png)
-  - Category 탭에서  **Connection**  &rightarrow; **SSH**  &rightarrow; **Auth**  &rightarrow; **Private key file for authentication에서 **[Browse]** 클릭  &rightarrow; awslab.ppk 선택 !  
-  [](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyauth.png)
+  - Category 탭에서  **Connection**  &rightarrow; **SSH**  &rightarrow; **Auth**  &rightarrow; **Private key file for authentication에서 **[Browse]** 클릭  &rightarrow; awslab.ppk 선택  
+  ![](https://saltware-aws-lab.s3.ap-northeast-2.amazonaws.com/img/puttyauth.png)
   - **Saved Sessions**에 awslab 입력 후 **[Save]** (이후 해당 EC2로 접속할 경우 해당 Session 선택후 **[Open]**
   - **[Open]** &rightarrow; **login as:** 에 ec2-user를 입력
 - SSH 접속이 되지 않을 경우 EC2 Instance에 붙어있는 Security Group에 SSH Protocol에 대해 해당 사용자가 접속된 IP로 부터 연결이 허가 되어있는지 확인.
