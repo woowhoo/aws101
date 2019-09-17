@@ -32,7 +32,8 @@
 
 	> EBS vs Instance Store volume ![EBS vs Instance Store volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/ebs_backed_instance.png)
 
-	> [EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+	> EBS volume types  
+  ![](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 	> * General Purpose SSD (gp2): 일반적인 Workload에 적합한 가성비를 가지고 있고 System Root Volume에 주로 이용
 	> * Provisioned IOPS SSD (io1): 많은 I/O가 필요한 어플리케이션에 사용하며 주로 데이터베이스 Volume으로 쓰임
 	> * Magnetic (standard): 일반적인 성능의 HDD
