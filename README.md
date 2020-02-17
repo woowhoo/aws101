@@ -429,6 +429,53 @@ e.g. Image resizing, Create image metadata, Monitoring critical objects
 
 3. Python Web App을 정지하고 Email Notification이 오면 점검중 페이지가 표시되는지 확인
 
+## APM with X-Ray 
+
+1. X-Ray 데몬 설치
+
+    ```bash
+    curl https://s3.dualstack.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.x.rpm -o /home/ec2-user/xray.rpm
+    ```
+
+    ```bash
+    sudo yum install -y /home/ec2-user/xray.rpm
+    ```
+
+2. AWS X-Ray SDK for Python 설치
+
+    ```bash
+    sudo pip3 install aws-xray-sdk
+    ```
+
+3. Application 소스 코드를 아래와 같이 수정
+
+    ```python
+    ...
+    ...
+    from aws_xray_sdk.core import xray_recorder
+    from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+    app = Flask(__name__)
+
+    xray_recorder.configure(service='form')
+    XRayMiddleware(app, xray_recorder)
+
+    ...
+    ...
+    ```
+
+4. IAM Dashboard로 이동해서 **awslab-ec2-role**에 *AWSXRayDaemonWriteAccess* 정책 연결
+
+5. Web Application을 재실행하고 새로운 Form 작성
+
+6. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 X-Ray를 검색하거나 **[Developer Tools]** 밑에 있는 **[X-Ray]** 를 선택
+
+7. X-Ray Dashboard에서 **[Traces]** 선택
+
+    * 각 URL별 응답속도 확인
+    * **Trace list** 에서 *Response Time* 이 가장 긴 Trace를 선택하고 어떤 URL 인지 확인
+    * Application 소스코드에서 *Response Time*이 가장 긴 URL에 Mapping된 Function을 찾고 *Response Time*이 긴 이유를 분석
+
 ## Clean up
 
 1. EC2 Instance 삭제
