@@ -123,7 +123,7 @@
 1. Clone a git repository
 
     ```bash
-    git clone https://github.com/woowhoo/aws101.git && cd aws101
+    git clone https://github.com/fitcloud/aws101.git && cd aws101
     ```
 
 2. Python Package 설치
